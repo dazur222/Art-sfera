@@ -19,7 +19,6 @@
       background: linear-gradient(to bottom right, #fef9f4, #f4e1d2);
       color: #222;
     }
-
     header {
       position: fixed;
       top: 0;
@@ -33,6 +32,9 @@
       padding: 2rem 1rem;
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
       z-index: 1000;
+      transition: background 0.5s cubic-bezier(0.4,0,0.2,1), background-color 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+      transition: background 0.5s cubic-bezier(0.4,0,0.2,1), background-color 0.5s cubic-bezier(0.4,0,0.2,1);
     }
 
     header h1 {
@@ -58,11 +60,14 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      transition: color 0.3s;
+      transition: color 0.3s, background 0.3s;
+      border-radius: 6px;
+      padding: 0.5rem 0.7rem;
     }
 
-    nav a:hover {
+    nav a:hover, nav a.active {
       color: #FFD93D;
+      background: rgba(255,255,255,0.08);
     }
 
     main {
@@ -75,9 +80,20 @@
       padding: 4rem 2rem;
     }
 
-    .hero h2 {
+    .hero h2, .section-title {
       font-size: 2rem;
       margin-bottom: 1rem;
+      transition: color 0.5s cubic-bezier(0.4,0,0.2,1),
+                  transform 0.5s cubic-bezier(0.4,0,0.2,1),
+                  opacity 0.5s cubic-bezier(0.4,0,0.2,1);
+      will-change: color, transform, opacity;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-title.animated {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
     }
 
     .hero p {
@@ -166,33 +182,26 @@
 
 <body>
   <header>
-    <h1>Artísfera</h1>
-    <p>Descubre. Conecta. Vive la cultura.</p>
+    <img src="/static/img/logo.png" alt="Logo Artísfera" style="width: 120px; display: block; margin: 0 auto 1rem auto; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: white;" />
+    <h1 style="text-align:center; margin-bottom:0.5rem;">Artísfera</h1>
+    <p style="text-align:center;">Descubre. Conecta. Vive la cultura.</p>
     <nav>
-      <a href="#"><i class="fas fa-calendar-alt"></i>Eventos</a>
-      <a href="#"><i class="fas fa-users"></i>Comunidad</a>
-      <a href="#"><i class="fas fa-paint-brush"></i>Artistas</a>
-      <a href="#"><i class="fas fa-map-marker-alt"></i>Lugares</a>
-      <a href="#"><i class="fas fa-envelope"></i>Contacto</a>
+      <a href="#" id="btn-eventos"><i class="fas fa-calendar-alt"></i>Eventos</a>
+      <a href="#" id="btn-comunidad"><i class="fas fa-users"></i>Comunidad</a>
+      <a href="#" id="btn-artistas"><i class="fas fa-paint-brush"></i>Artistas</a>
+      <a href="#" id="btn-lugares"><i class="fas fa-map-marker-alt"></i>Lugares</a>
+      <a href="#" id="btn-contacto"><i class="fas fa-envelope"></i>Contacto</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" id="main-content">
       <h2>¿Qué es Artísfera?</h2>
-      <p>Una plataforma hecha para que descubras lo mejor del arte y la cultura local. Participa, comparte y apoya a la
-        comunidad artística.</p>
+      <p>Una plataforma hecha para que descubras lo mejor del arte y la cultura local. Participa, comparte y apoya a la comunidad artística.</p>
       <button class="cta-button" onclick="handleButtonClick()">Explorar eventos</button>
     </section>
 
-    <script>
-
-      function handleButtonClick() {
-        window.location.href = "/mapa";
-      }
-    </script>
-
-    <section class="features">
+    <section class="features" id="features-section">
       <div class="feature">
         <img src="/static/img/teatro+8-724359117.jpg" alt="Obra El eco del silencio" class="feature-img">
         <h3>🎭 Obra: “El eco del silencio”</h3>
@@ -270,6 +279,203 @@
         </div>
       </div>
     </section>
+
+    <script>
+      function handleButtonClick() {
+        window.location.href = "/mapa";
+      }
+
+      // Sidebar button handlers
+      const mainContent = document.getElementById('main-content');
+      const featuresSection = document.getElementById('features-section');
+
+      function setActiveSidebar(id) {
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        const btn = document.getElementById(id);
+        if (btn) btn.classList.add('active');
+        // Cambia el color del header dinámicamente
+        const header = document.querySelector('header');
+        let color = '#8C52FF';
+        switch(id) {
+          case 'btn-eventos':
+            color = '#43d17a'; // verde
+            break;
+          case 'btn-comunidad':
+            color = '#ffb347'; // naranja
+            break;
+          case 'btn-artistas':
+            color = '#ff6b81'; // rosa
+            break;
+          case 'btn-lugares':
+            color = '#4fa3ff'; // azul
+            break;
+          case 'btn-contacto':
+            color = '#a259e6'; // morado
+            break;
+        }
+        header.style.background = color;
+        // Cambia el color del título principal del apartado con animación
+        const sectionTitle = document.querySelector('#main-content h2.section-title');
+        if(sectionTitle) {
+          sectionTitle.classList.add('animated');
+          setTimeout(() => {
+            sectionTitle.style.color = color;
+            sectionTitle.classList.remove('animated');
+          }, 200);
+        }
+      }
+
+      function showContent(html, btnId) {
+        mainContent.innerHTML = html;
+        featuresSection.style.display = 'none';
+        setActiveSidebar(btnId);
+        // Forzar animación del título tras renderizar
+        const header = document.querySelector('header');
+        const color = header.style.background;
+        const sectionTitle = document.querySelector('#main-content h2.section-title');
+        if(sectionTitle) {
+          sectionTitle.classList.add('animated');
+          setTimeout(() => {
+            sectionTitle.style.color = color;
+            sectionTitle.classList.remove('animated');
+          }, 200);
+        }
+      }
+      function showFeatures() {
+        mainContent.innerHTML = `<h2 class=\"section-title\">¿Qué es Artísfera?</h2>
+        <p>Una plataforma hecha para que descubras lo mejor del arte y la cultura local. Participa, comparte y apoya a la comunidad artística.</p>
+        <button class=\"cta-button\" onclick=\"handleButtonClick()\">Explorar eventos</button>`;
+        featuresSection.style.display = '';
+        setActiveSidebar('btn-eventos');
+        // Forzar animación del título tras renderizar
+        const header = document.querySelector('header');
+        const color = header.style.background;
+        const sectionTitle = document.querySelector('#main-content h2.section-title');
+        if(sectionTitle) {
+          sectionTitle.classList.add('animated');
+          setTimeout(() => {
+            sectionTitle.style.color = color;
+            sectionTitle.classList.remove('animated');
+          }, 200);
+        }
+      }
+
+      document.getElementById('btn-eventos').onclick = function(e) {
+        e.preventDefault();
+        showFeatures();
+      };
+      document.getElementById('btn-comunidad').onclick = function(e) {
+        e.preventDefault();
+        showContent(`
+          <h2 class='section-title'>Comunidad</h2>
+          <p>Únete a la comunidad artística, comparte tus proyectos y conecta con otros creativos.</p>
+          <div class="features">
+            <div class="feature">
+              <img src="/static/img/comunidad_foro.jpg" alt="Foro de discusión" class="feature-img">
+              <h3>💬 Foro de discusión</h3>
+              <p>Participa en debates, comparte ideas y resuelve dudas con otros miembros de la comunidad.</p>
+              <div class="meta">
+                <p><i class="fas fa-users"></i>+120 miembros activos</p>
+                <p><i class="fas fa-comments"></i>Temas recientes: "Arte y tecnología", "Convocatorias abiertas"</p>
+              </div>
+            </div>
+            <div class="feature">
+              <img src="/static/img/comunidad_colaboracion.jpg" alt="Colaboración artística" class="feature-img">
+              <h3>🤝 Colaboraciones</h3>
+              <p>Encuentra compañeros para proyectos, talleres y exposiciones colaborativas.</p>
+              <div class="meta">
+                <p><i class="fas fa-handshake"></i>+30 proyectos colaborativos</p>
+                <p><i class="fas fa-calendar-check"></i>Próxima convocatoria: 10 de julio</p>
+              </div>
+            </div>
+          </div>
+        `, 'btn-comunidad');
+      };
+      document.getElementById('btn-artistas').onclick = function(e) {
+        e.preventDefault();
+        showContent(`
+          <h2 class='section-title'>Artistas</h2>
+          <p>Descubre y apoya a los artistas locales destacados en diferentes disciplinas.</p>
+          <div class="features">
+            <div class="feature">
+              <img src="/static/img/artista1.jpg" alt="Artista visual" class="feature-img">
+              <h3>🎨 Sofía Méndez</h3>
+              <p>Artista visual y ceramista. Su obra explora la relación entre la naturaleza y la memoria.</p>
+              <div class="meta">
+                <p><i class="fas fa-paint-brush"></i>Disciplina: Artes visuales</p>
+                <p><i class="fas fa-map-marker-alt"></i>Monterrey, NL</p>
+              </div>
+            </div>
+            <div class="feature">
+              <img src="/static/img/artista2.jpg" alt="Músico local" class="feature-img">
+              <h3>🎸 Luis Torres</h3>
+              <p>Músico y compositor. Fusiona jazz y música tradicional mexicana en sus presentaciones.</p>
+              <div class="meta">
+                <p><i class="fas fa-music"></i>Disciplina: Música</p>
+                <p><i class="fas fa-map-marker-alt"></i>Saltillo, Coah.</p>
+              </div>
+            </div>
+          </div>
+        `, 'btn-artistas');
+      };
+      document.getElementById('btn-lugares').onclick = function(e) {
+        e.preventDefault();
+        showContent(`
+          <h2 class='section-title'>Lugares</h2>
+          <p>Explora los espacios culturales, galerías y foros donde sucede el arte en tu ciudad.</p>
+          <div class="features">
+            <div class="feature">
+              <img src="/static/img/galeria_centro.jpg" alt="Galería Centro Cultural" class="feature-img">
+              <h3>🏛️ Centro Cultural Alameda</h3>
+              <p>Espacio multidisciplinario con exposiciones, talleres y presentaciones artísticas.</p>
+              <div class="meta">
+                <p><i class="fas fa-map-marker-alt"></i>Av. Juárez 123, Centro</p>
+                <p><i class="fas fa-clock"></i>Lunes a sábado, 10:00-19:00</p>
+              </div>
+            </div>
+            <div class="feature">
+              <img src="/static/img/foro_parque.jpg" alt="Foro en el parque" class="feature-img">
+              <h3>🌳 Foro Parque Norte</h3>
+              <p>Escenario al aire libre para conciertos, cine y ferias culturales.</p>
+              <div class="meta">
+                <p><i class="fas fa-map-marker-alt"></i>Parque Norte, Col. Vista Hermosa</p>
+                <p><i class="fas fa-calendar-alt"></i>Próximo evento: 5 de julio</p>
+              </div>
+            </div>
+          </div>
+        `, 'btn-lugares');
+      };
+      document.getElementById('btn-contacto').onclick = function(e) {
+        e.preventDefault();
+        showContent(`
+          <h2 class='section-title'>Contacto</h2>
+          <p>¿Tienes dudas, sugerencias o quieres colaborar? ¡Escríbenos!</p>
+          <div class="features">
+            <div class="feature">
+              <img src="/static/img/contacto_email.jpg" alt="Contacto por email" class="feature-img">
+              <h3>✉️ Email</h3>
+              <p>info@artisfera.com</p>
+              <div class="meta">
+                <p><i class="fas fa-envelope"></i>Respuesta en menos de 24h</p>
+              </div>
+            </div>
+            <div class="feature">
+              <img src="/static/img/contacto_redes.jpg" alt="Redes sociales" class="feature-img">
+              <h3>🌐 Redes sociales</h3>
+              <p>
+                Instagram: <a href="https://instagram.com/artisfera" target="_blank">@artisfera</a><br>
+                Facebook: <a href="https://facebook.com/artisfera" target="_blank">facebook.com/artisfera</a>
+              </p>
+              <div class="meta">
+                <p><i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i> Síguenos y contáctanos</p>
+              </div>
+            </div>
+          </div>
+        `, 'btn-contacto');
+      };
+      // Marcar activo por defecto
+      setActiveSidebar('btn-eventos');
+    </script>
   </main>
 
   <footer>
