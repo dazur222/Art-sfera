@@ -1,145 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GolfinBot</title>
-  <script src="index.js" defer></script>
+  <title>Artísfera | Vive la Cultura</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet"/>
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      display: flex;
-      height: 100vh;
-      justify-content: center;
-      align-items: center;
+      background: linear-gradient(to bottom right, #fef9f4, #f4e1d2);
+      color: #222;
     }
 
-    .chat-container {
-      width: 400px;
-      height: 600px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .chat-header {
-      background-color: #4a76a8;
+    header {
+      background-color: #8C52FF;
       color: white;
-      padding: 16px;
+      padding: 2rem 1rem;
       text-align: center;
-      font-weight: bold;
     }
 
-    .chat-messages {
-      flex: 1;
-      padding: 16px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    header h1 {
+      font-size: 3rem;
     }
 
-    .message {
-      max-width: 70%;
-      padding: 10px 14px;
-      border-radius: 20px;
-      line-height: 1.4;
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
     }
 
-    .user {
-      align-self: flex-end;
-      background-color: #dcf8c6;
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
     }
 
-    .bot {
-      align-self: flex-start;
-      background-color: #ececec;
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
 
-    .chat-input {
-      display: flex;
-      border-top: 1px solid #ddd;
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
     }
 
-    .chat-input input {
-      flex: 1;
-      border: none;
-      padding: 12px;
-      font-size: 16px;
-    }
-
-    .chat-input button {
-      background-color: #4a76a8;
+    .cta-button {
+      background-color: #FF6B6B;
       color: white;
       border: none;
-      padding: 12px 20px;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
-    .chat-input input:focus,
-    .chat-input button:focus {
-      outline: none;
+    .cta-button:hover {
+      background-color: #e95555;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 4rem 2rem;
+    }
+
+    .feature {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .feature h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      background-color: #2f2f2f;
+      color: #ccc;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat-header">GolfinBot</div>
-    <div class="chat-messages" id="chat">
-      <div class="message bot">¡Hola!, ¿En qué te puedo ayudar hoy?</div>
-      
-      <div class="message bot">FAQ<br>
-      ¿Qué es golfin?<br>
-    ¿Cómo se juega <br>
-  ¿Cómo puedo jugar con amigos?</div>
+  <header>
+    <h1>Artísfera</h1>
+    <p>Descubre. Conecta. Vive la cultura.</p>
+  </header>
 
-      
+  <section class="hero">
+    <h2>¿Qué es Artísfera?</h2>
+    <p>Artísfera es tu nueva plataforma para descubrir eventos culturales cerca de ti. Desde exposiciones y conciertos hasta teatro independiente y ferias artesanales.</p>
+    <button class="cta-button">Ver eventos cercanos</button>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h3>Eventos personalizados</h3>
+      <p>Recibe recomendaciones basadas en tus intereses culturales.</p>
     </div>
-    <form class="chat-input" onsubmit="handleSend(event)">
-      <input type="text" id="input" placeholder="Type your message..." />
-      <button type="submit">Send</button>
-    </form>
-  </div>
+    <div class="feature">
+      <h3>Comparte con tu comunidad</h3>
+      <p>Invita a tus amigos y crea círculos culturales.</p>
+    </div>
+    <div class="feature">
+      <h3>Apoya el arte local</h3>
+      <p>Conéctate con artistas y espacios independientes de tu ciudad.</p>
+    </div>
+  </section>
 
-  <script>
-    async function  handleSend(event) {
-      event.preventDefault();
-      const input = document.getElementById('input');
-      const chat = document.getElementById('chat');
-
-      let response = await sendPrompt(input.value) 
-      
-
-
-      
-
-
-      if (!input.value.trim()) return;
-
-      // Append user message
-      const userMsg = document.createElement('div');
-      userMsg.className = 'message user';
-      userMsg.textContent = input.value;
-      chat.appendChild(userMsg);
-
-      // Append bot response (static for now)
-      const botMsg = document.createElement('div');
-      botMsg.className = 'message bot';
-      botMsg.textContent = response.response;
-      chat.appendChild(botMsg);
-
-      input.value = '';
-      chat.scrollTop = chat.scrollHeight;
-    }
-  </script>
+  <footer>
+    <p>&copy; 2025 Artísfera. Todos los derechos reservados.</p>
+    <p><a href="#">Política de privacidad</a> | <a href="#">Términos de uso</a></p>
+  </footer>
 </body>
 </html>
