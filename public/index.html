@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Artísfera | Vive la Cultura</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
       box-sizing: border-box;
@@ -30,7 +31,7 @@
       display: flex;
       flex-direction: column;
       padding: 2rem 1rem;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
       z-index: 1000;
     }
 
@@ -111,7 +112,7 @@
       background: white;
       border-radius: 12px;
       padding: 2rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .feature h3 {
@@ -151,8 +152,18 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    .feature-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      display: block;
+    }
   </style>
 </head>
+
 <body>
   <header>
     <h1>Artísfera</h1>
@@ -169,12 +180,14 @@
   <main>
     <section class="hero">
       <h2>¿Qué es Artísfera?</h2>
-      <p>Una plataforma hecha para que descubras lo mejor del arte y la cultura local. Participa, comparte y apoya a la comunidad artística.</p>
+      <p>Una plataforma hecha para que descubras lo mejor del arte y la cultura local. Participa, comparte y apoya a la
+        comunidad artística.</p>
       <button class="cta-button">Explorar eventos</button>
     </section>
 
     <section class="features">
       <div class="feature">
+        <img src="../public/static/img/teatro+8-724359117.jpg" alt="Obra El eco del silencio" class="feature-img">
         <h3>🎭 Obra: “El eco del silencio”</h3>
         <p>Una poderosa puesta en escena contemporánea sobre la memoria y el duelo, dirigida por Clara Ruiz.</p>
         <div class="meta">
@@ -185,8 +198,11 @@
       </div>
 
       <div class="feature">
+        <img src="../public/static/img/standard_jazz+en+los+parques+de+san+isidro+(1)-3947712425.jpg"
+          alt="Concierto Jazz en el parque" class="feature-img">
         <h3>🎶 Concierto: Jazz en el parque</h3>
-        <p>El colectivo “Jazz Libre” trae una noche de música al aire libre con artistas locales e invitados internacionales.</p>
+        <p>El colectivo “Jazz Libre” trae una noche de música al aire libre con artistas locales e invitados
+          internacionales.</p>
         <div class="meta">
           <p><i class="fas fa-clock"></i>Sábado 29 de junio, 20:30 hrs</p>
           <p><i class="fas fa-ticket-alt"></i>Entrada libre</p>
@@ -195,12 +211,55 @@
       </div>
 
       <div class="feature">
+        <img src="../public/static/img/f680582c8ffb95558e7306fd88846563-3715012774.jpg"
+          alt="Expo Arte textil contemporáneo" class="feature-img">
         <h3>🖼️ Expo: Arte textil contemporáneo</h3>
         <p>Exposición colectiva con más de 30 piezas de arte textil de artistas emergentes del norte del país.</p>
         <div class="meta">
           <p><i class="fas fa-clock"></i>Del 1 al 15 de julio, 10:00 - 18:00</p>
           <p><i class="fas fa-ticket-alt"></i>$50 MXN</p>
           <p><i class="fas fa-user-friends"></i>Asistentes estimados: 350</p>
+        </div>
+      </div>
+
+      <!-- Nueva tarjeta 1 -->
+      <div class="feature">
+        <img src="../public/static/img/taller_ceramica-123456taller_ceramica-123456789.jpg789.jpg"
+          alt="Taller de cerámica creativa" class="feature-img">
+        <h3>🏺 Taller: Cerámica creativa</h3>
+        <p>Aprende técnicas básicas y avanzadas de cerámica en un ambiente relajado, guiado por la artista Sofía Méndez.
+        </p>
+        <div class="meta">
+          <p><i class="fas fa-clock"></i>Domingo 7 de julio, 11:00 - 14:00</p>
+          <p><i class="fas fa-ticket-alt"></i>$300 MXN (incluye materiales)</p>
+          <p><i class="fas fa-user-friends"></i>Asistentes estimados: 20</p>
+        </div>
+      </div>
+
+      <!-- Nueva tarjeta 2 -->
+      <div class="feature">
+        <img src="../public/static/img/cine_al_aire_libre-987654321.jpg" alt="Cine al aire libre" class="feature-img">
+        <h3>🎬 Cine al aire libre: “Cortos locales”</h3>
+        <p>Proyección de cortometrajes realizados por cineastas de la región, bajo las estrellas en el parque central.
+        </p>
+        <div class="meta">
+          <p><i class="fas fa-clock"></i>Viernes 12 de julio, 20:00 hrs</p>
+          <p><i class="fas fa-ticket-alt"></i>Entrada libre</p>
+          <p><i class="fas fa-user-friends"></i>Asistentes estimados: 120</p>
+        </div>
+      </div>
+
+      <!-- Nueva tarjeta 3 -->
+      <div class="feature">
+        <img src="../public/static/img/feria_libro-192837465.jpg" alt="Feria del libro independiente"
+          class="feature-img">
+        <h3>📚 Feria del libro independiente</h3>
+        <p>Encuentro de editoriales y autores independientes, presentaciones de libros y actividades para toda la
+          familia.</p>
+        <div class="meta">
+          <p><i class="fas fa-clock"></i>Sábado 20 y domingo 21 de julio, 10:00 - 19:00</p>
+          <p><i class="fas fa-ticket-alt"></i>Entrada libre</p>
+          <p><i class="fas fa-user-friends"></i>Asistentes estimados: 500</p>
         </div>
       </div>
     </section>
@@ -211,4 +270,5 @@
     <p><a href="#">Política de privacidad</a> | <a href="#">Términos de uso</a></p>
   </footer>
 </body>
+
 </html>
