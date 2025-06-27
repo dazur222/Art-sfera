@@ -311,37 +311,27 @@
           map.touchZoom.enable();
         }
       }
-      // Desactiva el mapa cuando el mouse o touch está sobre el contenedor del slider o el slider
-      const controlDiv = document.querySelector('.control');
-      function blockMapEvents(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        return false;
-      }
-      function blockMapOnDown(e) {
+      // Evita que el mapa reciba eventos mientras se interactúa con el slider
+      radiusInput.addEventListener("pointerdown", (e) => {
+        sliderActive = true;
         disableMapInteraction();
-        blockMapEvents(e);
-      }
-      function unblockMapOnUp(e) {
+        e.stopPropagation();
+      });
+      radiusInput.addEventListener("pointerup", (e) => {
+        sliderActive = false;
         enableMapInteraction();
-        blockMapEvents(e);
-      }
-      // Para mouse y touch
-      controlDiv.addEventListener('pointerenter', disableMapInteraction);
-      controlDiv.addEventListener('pointerleave', enableMapInteraction);
-      radiusInput.addEventListener('pointerdown', blockMapOnDown);
-      radiusInput.addEventListener('pointerup', unblockMapOnUp);
-      radiusInput.addEventListener('pointercancel', unblockMapOnUp);
-      radiusInput.addEventListener('pointerleave', unblockMapOnUp);
-      // Bloquea propagación de eventos que puedan mover el mapa
-      radiusInput.addEventListener('mousedown', blockMapEvents);
-      radiusInput.addEventListener('mouseup', blockMapEvents);
-      radiusInput.addEventListener('mousemove', blockMapEvents);
-      radiusInput.addEventListener('touchstart', blockMapEvents);
-      radiusInput.addEventListener('touchend', blockMapEvents);
-      radiusInput.addEventListener('touchmove', blockMapEvents);
-      radiusInput.addEventListener('click', blockMapEvents);
-      radiusInput.addEventListener('wheel', blockMapEvents);
+        e.stopPropagation();
+      });
+      radiusInput.addEventListener("pointerleave", (e) => {
+        if (sliderActive) {
+          sliderActive = false;
+          enableMapInteraction();
+        }
+        e.stopPropagation();
+      });
+      // También evita propagación en click y wheel sobre el slider
+      radiusInput.addEventListener("click", e => e.stopPropagation());
+      radiusInput.addEventListener("wheel", e => e.stopPropagation());
 
 
 
