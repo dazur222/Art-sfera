@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GolfinBot</title>
+  <script src="index.js" defer></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .chat-container {
+      width: 400px;
+      height: 600px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background-color: #4a76a8;
+      color: white;
+      padding: 16px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      max-width: 70%;
+      padding: 10px 14px;
+      border-radius: 20px;
+      line-height: 1.4;
+    }
+
+    .user {
+      align-self: flex-end;
+      background-color: #dcf8c6;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background-color: #ececec;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+    }
+
+    .chat-input button {
+      background-color: #4a76a8;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+    }
+
+    .chat-input input:focus,
+    .chat-input button:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">GolfinBot</div>
+    <div class="chat-messages" id="chat">
+      <div class="message bot">¡Hola!, ¿En qué te puedo ayudar hoy?</div>
+      
+      <div class="message bot">FAQ<br>
+      ¿Qué es golfin?<br>
+    ¿Cómo se juega <br>
+  ¿Cómo puedo jugar con amigos?</div>
+
+      
+    </div>
+    <form class="chat-input" onsubmit="handleSend(event)">
+      <input type="text" id="input" placeholder="Type your message..." />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    async function  handleSend(event) {
+      event.preventDefault();
+      const input = document.getElementById('input');
+      const chat = document.getElementById('chat');
+
+      let response = await sendPrompt(input.value) 
+      
+
+
+      
+
+
+      if (!input.value.trim()) return;
+
+      // Append user message
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user';
+      userMsg.textContent = input.value;
+      chat.appendChild(userMsg);
+
+      // Append bot response (static for now)
+      const botMsg = document.createElement('div');
+      botMsg.className = 'message bot';
+      botMsg.textContent = response.response;
+      chat.appendChild(botMsg);
+
+      input.value = '';
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+</body>
+</html>
