@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Artísfera | Vive la Cultura</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     * {
       box-sizing: border-box;
@@ -18,7 +19,6 @@
       color: #222;
     }
 
-    /* Barra lateral izquierda */
     header {
       position: fixed;
       top: 0;
@@ -29,7 +29,6 @@
       color: white;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       padding: 2rem 1rem;
       box-shadow: 2px 0 10px rgba(0,0,0,0.2);
       z-index: 1000;
@@ -37,17 +36,36 @@
 
     header h1 {
       font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-      text-align: left;
+      margin-bottom: 1rem;
     }
 
     header p {
       font-size: 1rem;
-      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #FFD93D;
     }
 
     main {
-      margin-left: 250px; /* espacio para la barra */
+      margin-left: 250px;
       padding: 2rem;
     }
 
@@ -84,7 +102,7 @@
 
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
       padding: 4rem 2rem;
     }
@@ -94,11 +112,27 @@
       border-radius: 12px;
       padding: 2rem;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
     }
 
     .feature h3 {
       margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .feature p {
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .feature .meta {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .feature .meta i {
+      margin-right: 6px;
+      color: #8C52FF;
     }
 
     footer {
@@ -123,27 +157,51 @@
   <header>
     <h1>Artísfera</h1>
     <p>Descubre. Conecta. Vive la cultura.</p>
+    <nav>
+      <a href="#"><i class="fas fa-calendar-alt"></i>Eventos</a>
+      <a href="#"><i class="fas fa-users"></i>Comunidad</a>
+      <a href="#"><i class="fas fa-paint-brush"></i>Artistas</a>
+      <a href="#"><i class="fas fa-map-marker-alt"></i>Lugares</a>
+      <a href="#"><i class="fas fa-envelope"></i>Contacto</a>
+    </nav>
   </header>
 
   <main>
     <section class="hero">
       <h2>¿Qué es Artísfera?</h2>
-      <p>Artísfera es tu nueva plataforma para descubrir eventos culturales cerca de ti. Desde exposiciones y conciertos hasta teatro independiente y ferias artesanales.</p>
-      <button class="cta-button">Ver eventos cercanos</button>
+      <p>Una plataforma hecha para que descubras lo mejor del arte y la cultura local. Participa, comparte y apoya a la comunidad artística.</p>
+      <button class="cta-button">Explorar eventos</button>
     </section>
 
     <section class="features">
       <div class="feature">
-        <h3>Eventos personalizados</h3>
-        <p>Recibe recomendaciones basadas en tus intereses culturales.</p>
+        <h3>🎭 Obra: “El eco del silencio”</h3>
+        <p>Una poderosa puesta en escena contemporánea sobre la memoria y el duelo, dirigida por Clara Ruiz.</p>
+        <div class="meta">
+          <p><i class="fas fa-clock"></i>Viernes 28 de junio, 19:00 hrs</p>
+          <p><i class="fas fa-ticket-alt"></i>$150 MXN</p>
+          <p><i class="fas fa-user-friends"></i>Asistentes estimados: 85</p>
+        </div>
       </div>
+
       <div class="feature">
-        <h3>Comparte con tu comunidad</h3>
-        <p>Invita a tus amigos y crea círculos culturales.</p>
+        <h3>🎶 Concierto: Jazz en el parque</h3>
+        <p>El colectivo “Jazz Libre” trae una noche de música al aire libre con artistas locales e invitados internacionales.</p>
+        <div class="meta">
+          <p><i class="fas fa-clock"></i>Sábado 29 de junio, 20:30 hrs</p>
+          <p><i class="fas fa-ticket-alt"></i>Entrada libre</p>
+          <p><i class="fas fa-user-friends"></i>Asistentes estimados: 200</p>
+        </div>
       </div>
+
       <div class="feature">
-        <h3>Apoya el arte local</h3>
-        <p>Conéctate con artistas y espacios independientes de tu ciudad.</p>
+        <h3>🖼️ Expo: Arte textil contemporáneo</h3>
+        <p>Exposición colectiva con más de 30 piezas de arte textil de artistas emergentes del norte del país.</p>
+        <div class="meta">
+          <p><i class="fas fa-clock"></i>Del 1 al 15 de julio, 10:00 - 18:00</p>
+          <p><i class="fas fa-ticket-alt"></i>$50 MXN</p>
+          <p><i class="fas fa-user-friends"></i>Asistentes estimados: 350</p>
+        </div>
       </div>
     </section>
   </main>
