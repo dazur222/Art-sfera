@@ -10,6 +10,13 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/register.html'));
+});
+
+app.get('/mapa', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/mapa.html'));
+});
 app.get("/sendPrompt", async (req, res) => {
     let prompt = req.query.prompt
     console.log("entramos ")
