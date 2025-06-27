@@ -19,6 +19,7 @@
       background: linear-gradient(to bottom right, #fef9f4, #f4e1d2);
       color: #222;
     }
+
     header {
       position: fixed;
       top: 0;
@@ -32,9 +33,11 @@
       padding: 2rem 1rem;
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
       z-index: 1000;
-      transition: background 0.5s cubic-bezier(0.4,0,0.2,1), background-color 0.5s cubic-bezier(0.4,0,0.2,1);
+      transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
-      transition: background 0.5s cubic-bezier(0.4,0,0.2,1), background-color 0.5s cubic-bezier(0.4,0,0.2,1);
+
+    transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     header h1 {
@@ -65,9 +68,10 @@
       padding: 0.5rem 0.7rem;
     }
 
-    nav a:hover, nav a.active {
-      color: #FFD93D;
-      background: rgba(255,255,255,0.08);
+    nav a:hover,
+    nav a.active {
+      color: #000000;
+      background: rgba(255, 255, 255, 0.08);
     }
 
     main {
@@ -80,12 +84,13 @@
       padding: 4rem 2rem;
     }
 
-    .hero h2, .section-title {
+    .hero h2,
+    .section-title {
       font-size: 2rem;
       margin-bottom: 1rem;
-      transition: color 0.5s cubic-bezier(0.4,0,0.2,1),
-                  transform 0.5s cubic-bezier(0.4,0,0.2,1),
-                  opacity 0.5s cubic-bezier(0.4,0,0.2,1);
+      transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: color, transform, opacity;
       opacity: 1;
       transform: translateY(0);
@@ -182,8 +187,8 @@
 
 <body>
   <header>
-    <img src="/static/img/logo2.jpeg" alt="Logo Artísfera" style="width: 120px; display: block; margin: 0 auto 1rem auto; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: white;" />
-    <h1 style="text-align:center; margin-bottom:0.5rem;">Artísfera</h1>
+    <img src="/static/img/logo2.jpeg" alt="Logo Artísfera"
+      style="width: 120px; display: block; margin: 0 auto 1rem auto; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: white;" />
     <p style="text-align:center;">Descubre. Conecta. Vive la cultura.</p>
     <nav>
       <a href="#" id="btn-eventos"><i class="fas fa-calendar-alt"></i>Eventos</a>
@@ -197,7 +202,8 @@
   <main>
     <section class="hero" id="main-content">
       <h2>¿Qué es Artísfera?</h2>
-      <p>Una plataforma hecha para que descubras lo mejor del arte y la cultura local. Participa, comparte y apoya a la comunidad artística.</p>
+      <p>Una plataforma hecha para que descubras lo mejor del arte y la cultura local. Participa, comparte y apoya a la
+        comunidad artística.</p>
       <button class="cta-button" onclick="handleButtonClick()">Explorar eventos</button>
     </section>
 
@@ -227,8 +233,8 @@
       </div>
 
       <div class="feature">
-        <img src="/static/img/f680582c8ffb95558e7306fd88846563-3715012774.jpg"
-          alt="Expo Arte textil contemporáneo" class="feature-img">
+        <img src="/static/img/f680582c8ffb95558e7306fd88846563-3715012774.jpg" alt="Expo Arte textil contemporáneo"
+          class="feature-img">
         <h3>🖼️ Expo: Arte textil contemporáneo</h3>
         <p>Exposición colectiva con más de 30 piezas de arte textil de artistas emergentes del norte del país.</p>
         <div class="meta">
@@ -267,8 +273,7 @@
 
       <!-- Nueva tarjeta 3 -->
       <div class="feature">
-        <img src="/static/img/feria_libro-192837465.jpg" alt="Feria del libro independiente"
-          class="feature-img">
+        <img src="/static/img/feria_libro-192837465.jpg" alt="Feria del libro independiente" class="feature-img">
         <h3>📚 Feria del libro independiente</h3>
         <p>Encuentro de editoriales y autores independientes, presentaciones de libros y actividades para toda la
           familia.</p>
@@ -296,7 +301,7 @@
         // Cambia el color del header dinámicamente
         const header = document.querySelector('header');
         let color = '#8C52FF';
-        switch(id) {
+        switch (id) {
           case 'btn-eventos':
             color = '#43d17a'; // verde
             break;
@@ -316,7 +321,7 @@
         header.style.background = color;
         // Cambia el color del título principal del apartado con animación
         const sectionTitle = document.querySelector('#main-content h2.section-title');
-        if(sectionTitle) {
+        if (sectionTitle) {
           sectionTitle.classList.add('animated');
           setTimeout(() => {
             sectionTitle.style.color = color;
@@ -333,7 +338,7 @@
         const header = document.querySelector('header');
         const color = header.style.background;
         const sectionTitle = document.querySelector('#main-content h2.section-title');
-        if(sectionTitle) {
+        if (sectionTitle) {
           sectionTitle.classList.add('animated');
           setTimeout(() => {
             sectionTitle.style.color = color;
@@ -351,7 +356,7 @@
         const header = document.querySelector('header');
         const color = header.style.background;
         const sectionTitle = document.querySelector('#main-content h2.section-title');
-        if(sectionTitle) {
+        if (sectionTitle) {
           sectionTitle.classList.add('animated');
           setTimeout(() => {
             sectionTitle.style.color = color;
@@ -360,18 +365,18 @@
         }
       }
 
-      document.getElementById('btn-eventos').onclick = function(e) {
+      document.getElementById('btn-eventos').onclick = function (e) {
         e.preventDefault();
         showFeatures();
       };
-      document.getElementById('btn-comunidad').onclick = function(e) {
+      document.getElementById('btn-comunidad').onclick = function (e) {
         e.preventDefault();
         showContent(`
           <h2 class='section-title'>Comunidad</h2>
           <p>Únete a la comunidad artística, comparte tus proyectos y conecta con otros creativos.</p>
           <div class="features">
             <div class="feature">
-              <img src="/static/img/comunidad_foro.jpg" alt="Foro de discusión" class="feature-img">
+              <img src="/static/img/foro.jpg" alt="Foro de discusión" class="feature-img">
               <h3>💬 Foro de discusión</h3>
               <p>Participa en debates, comparte ideas y resuelve dudas con otros miembros de la comunidad.</p>
               <div class="meta">
@@ -380,7 +385,7 @@
               </div>
             </div>
             <div class="feature">
-              <img src="/static/img/comunidad_colaboracion.jpg" alt="Colaboración artística" class="feature-img">
+              <img src="/static/img/colaboraciones.jpg" alt="Colaboración artística" class="feature-img">
               <h3>🤝 Colaboraciones</h3>
               <p>Encuentra compañeros para proyectos, talleres y exposiciones colaborativas.</p>
               <div class="meta">
@@ -391,14 +396,14 @@
           </div>
         `, 'btn-comunidad');
       };
-      document.getElementById('btn-artistas').onclick = function(e) {
+      document.getElementById('btn-artistas').onclick = function (e) {
         e.preventDefault();
         showContent(`
           <h2 class='section-title'>Artistas</h2>
           <p>Descubre y apoya a los artistas locales destacados en diferentes disciplinas.</p>
           <div class="features">
             <div class="feature">
-              <img src="/static/img/artista1.jpg" alt="Artista visual" class="feature-img">
+              <img src="/static/img/sofia.jpg" alt="Artista visual" class="feature-img">
               <h3>🎨 Sofía Méndez</h3>
               <p>Artista visual y ceramista. Su obra explora la relación entre la naturaleza y la memoria.</p>
               <div class="meta">
@@ -407,7 +412,7 @@
               </div>
             </div>
             <div class="feature">
-              <img src="/static/img/artista2.jpg" alt="Músico local" class="feature-img">
+              <img src="/static/img/luis.jpg" alt="Músico local" class="feature-img">
               <h3>🎸 Luis Torres</h3>
               <p>Músico y compositor. Fusiona jazz y música tradicional mexicana en sus presentaciones.</p>
               <div class="meta">
@@ -418,14 +423,14 @@
           </div>
         `, 'btn-artistas');
       };
-      document.getElementById('btn-lugares').onclick = function(e) {
+      document.getElementById('btn-lugares').onclick = function (e) {
         e.preventDefault();
         showContent(`
           <h2 class='section-title'>Lugares</h2>
           <p>Explora los espacios culturales, galerías y foros donde sucede el arte en tu ciudad.</p>
           <div class="features">
             <div class="feature">
-              <img src="/static/img/galeria_centro.jpg" alt="Galería Centro Cultural" class="feature-img">
+              <img src="/static/img/alameda.png" alt="Galería Centro Cultural" class="feature-img">
               <h3>🏛️ Centro Cultural Alameda</h3>
               <p>Espacio multidisciplinario con exposiciones, talleres y presentaciones artísticas.</p>
               <div class="meta">
@@ -434,7 +439,7 @@
               </div>
             </div>
             <div class="feature">
-              <img src="/static/img/foro_parque.jpg" alt="Foro en el parque" class="feature-img">
+              <img src="/static/img/fore.jpg" alt="Foro en el parque" class="feature-img">
               <h3>🌳 Foro Parque Norte</h3>
               <p>Escenario al aire libre para conciertos, cine y ferias culturales.</p>
               <div class="meta">
@@ -445,14 +450,14 @@
           </div>
         `, 'btn-lugares');
       };
-      document.getElementById('btn-contacto').onclick = function(e) {
+      document.getElementById('btn-contacto').onclick = function (e) {
         e.preventDefault();
         showContent(`
           <h2 class='section-title'>Contacto</h2>
           <p>¿Tienes dudas, sugerencias o quieres colaborar? ¡Escríbenos!</p>
           <div class="features">
             <div class="feature">
-              <img src="/static/img/contacto_email.jpg" alt="Contacto por email" class="feature-img">
+              <img src="/static/img/email.jpg" alt="Contacto por email" class="feature-img">
               <h3>✉️ Email</h3>
               <p>info@artisfera.com</p>
               <div class="meta">
@@ -460,7 +465,7 @@
               </div>
             </div>
             <div class="feature">
-              <img src="/static/img/contacto_redes.jpg" alt="Redes sociales" class="feature-img">
+              <img src="/static/img/redes.jpg" alt="Redes sociales" class="feature-img">
               <h3>🌐 Redes sociales</h3>
               <p>
                 Instagram: <a href="https://instagram.com/artisfera" target="_blank">@artisfera</a><br>
