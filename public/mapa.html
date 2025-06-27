@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mapa Cultural | Artísfera</title>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
-    body, html {
+    body,
+    html {
       margin: 0;
       height: 100%;
       font-family: 'Montserrat', sans-serif;
@@ -33,7 +32,7 @@
       z-index: 1000;
       padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       width: 200px;
     }
 
@@ -74,9 +73,8 @@
       padding: 1.5rem 1rem;
       overflow-y: auto;
       height: 100vh;
-      box-shadow: inset 1px 0 8px rgba(0,0,0,0.1);
       min-width: 320px;
-      max-width: 500px;
+      max-width: none;
     }
 
     #event-list h2 {
@@ -89,13 +87,13 @@
       padding: 1rem;
       border-radius: 12px;
       margin-bottom: 1rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.3s;
       cursor: pointer;
     }
 
     .event-item:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .event-title {
@@ -121,15 +119,22 @@
       font-size: 0.85rem;
       color: #777;
     }
-
   </style>
 </head>
+
 <body>
 
   <div id="map" style="width: 65vw; height: 100vh; position: relative;">
     <div class="control">
       <label for="radius">Radio (<span id="radius-value">5</span> km):</label>
       <input type="range" id="radius" value="5" min="1" max="50" step="1" />
+    </div>
+    <!-- Botones de zoom personalizados -->
+    <div id="custom-zoom" style="position:absolute; bottom:20px; left:20px; z-index:1100;">
+      <button id="zoom-in"
+        style="width:40px; height:40px; font-size:1.5rem; margin-bottom:5px; border-radius:50%; border:none; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.15); cursor:pointer;">+</button>
+      <button id="zoom-out"
+        style="width:40px; height:40px; font-size:1.5rem; border-radius:50%; border:none; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.15); cursor:pointer;">−</button>
     </div>
   </div>
 
@@ -237,7 +242,7 @@
     function renderEventList(eventos, userLatLng) {
       const container = document.getElementById("events-container");
       container.innerHTML = "";
-      if(eventos.length === 0) {
+      if (eventos.length === 0) {
         container.innerHTML = "<p>No hay eventos dentro de tu radio.</p>";
         return;
       }
@@ -259,7 +264,7 @@
         // Al hacer click, abre el popup correspondiente en el mapa
         div.addEventListener("click", () => {
           markers.forEach(marker => {
-            if(marker.getLatLng().lat === evento.lat && marker.getLatLng().lng === evento.lng){
+            if (marker.getLatLng().lat === evento.lat && marker.getLatLng().lng === evento.lng) {
               marker.openPopup();
               map.panTo(marker.getLatLng());
             }
@@ -281,6 +286,10 @@
         .addTo(map)
         .bindPopup("Estás aquí")
         .openPopup();
+
+      // Botones de zoom personalizados
+      document.getElementById("zoom-in").onclick = () => map.zoomIn();
+      document.getElementById("zoom-out").onclick = () => map.zoomOut();
 
       updateMap();
     }
@@ -358,4 +367,5 @@
     }
   </script>
 </body>
+
 </html>
