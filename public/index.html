@@ -18,20 +18,37 @@
       color: #222;
     }
 
+    /* Barra lateral izquierda */
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 250px;
       background-color: #8C52FF;
       color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       padding: 2rem 1rem;
-      text-align: center;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+      z-index: 1000;
     }
 
     header h1 {
-      font-size: 3rem;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      text-align: left;
     }
 
     header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+      font-size: 1rem;
+      text-align: left;
+    }
+
+    main {
+      margin-left: 250px; /* espacio para la barra */
+      padding: 2rem;
     }
 
     .hero {
@@ -108,26 +125,28 @@
     <p>Descubre. Conecta. Vive la cultura.</p>
   </header>
 
-  <section class="hero">
-    <h2>¿Qué es Artísfera?</h2>
-    <p>Artísfera es tu nueva plataforma para descubrir eventos culturales cerca de ti. Desde exposiciones y conciertos hasta teatro independiente y ferias artesanales.</p>
-    <button class="cta-button">Ver eventos cercanos</button>
-  </section>
+  <main>
+    <section class="hero">
+      <h2>¿Qué es Artísfera?</h2>
+      <p>Artísfera es tu nueva plataforma para descubrir eventos culturales cerca de ti. Desde exposiciones y conciertos hasta teatro independiente y ferias artesanales.</p>
+      <button class="cta-button">Ver eventos cercanos</button>
+    </section>
 
-  <section class="features">
-    <div class="feature">
-      <h3>Eventos personalizados</h3>
-      <p>Recibe recomendaciones basadas en tus intereses culturales.</p>
-    </div>
-    <div class="feature">
-      <h3>Comparte con tu comunidad</h3>
-      <p>Invita a tus amigos y crea círculos culturales.</p>
-    </div>
-    <div class="feature">
-      <h3>Apoya el arte local</h3>
-      <p>Conéctate con artistas y espacios independientes de tu ciudad.</p>
-    </div>
-  </section>
+    <section class="features">
+      <div class="feature">
+        <h3>Eventos personalizados</h3>
+        <p>Recibe recomendaciones basadas en tus intereses culturales.</p>
+      </div>
+      <div class="feature">
+        <h3>Comparte con tu comunidad</h3>
+        <p>Invita a tus amigos y crea círculos culturales.</p>
+      </div>
+      <div class="feature">
+        <h3>Apoya el arte local</h3>
+        <p>Conéctate con artistas y espacios independientes de tu ciudad.</p>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <p>&copy; 2025 Artísfera. Todos los derechos reservados.</p>
